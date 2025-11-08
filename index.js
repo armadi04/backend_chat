@@ -8,7 +8,7 @@ const { Server } = require("socket.io");
 
 const PORT = process.env.PORT || 4000;
 const CLIENT_ORIGIN = process.env.CLIENT_ORIGIN || "http://localhost:3000";
-const DATA_FILE = path.join(__dirname, "messages.json");
+const DATA_FILE = path.join("/tmp", "messages.json");
 const MAX_MESSAGES = Number(process.env.MAX_MESSAGES || 200);
 
 if (!fs.existsSync(DATA_FILE)) {
@@ -147,6 +147,11 @@ io.on("connection", (socket) => {
   });
 });
 
+app.get("/", (req, res) => {
+  res.send("Backend chat server is running...");
+});
+
 server.listen(PORT, () => {
   console.log(`Realtime chat server listening on port ${PORT}`);
 });
+
