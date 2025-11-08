@@ -7,7 +7,7 @@ const cors = require("cors");
 const { Server } = require("socket.io");
 
 const PORT = process.env.PORT || 4000;
-const CLIENT_ORIGIN = process.env.CLIENT_ORIGIN || "http://localhost:3000";
+const CLIENT_ORIGIN = process.env.CLIENT_ORIGIN || "https://frontend-chat-rho.vercel.app";
 // const DATA_FILE = path.join("/tmp", "messages.json");
 const DATA_FILE = path.join(process.cwd(), "messages.json");
 const MAX_MESSAGES = Number(process.env.MAX_MESSAGES || 200);
@@ -155,5 +155,6 @@ app.get("/", (req, res) => {
 server.listen(PORT, () => {
   console.log(`Realtime chat server listening on port ${PORT}`);
 });
+
 
 
